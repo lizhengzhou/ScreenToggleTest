@@ -24,12 +24,14 @@ import org.json.JSONException;
  */
 public class ScreenToggle extends CordovaPlugin {
 
+    final String tag = "lizz.ScreenToggle";
     DevicePolicyManager policyManager;
     ComponentName adminReceiver;
     KeyguardManager keyguardManager;
     PowerManager.WakeLock wakeLock;
     PowerManager powerManager;
-    final String tag = "lizz.ScreenToggle";
+    KeyguardManager.KeyguardLock keyLock;
+    
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
@@ -50,6 +52,9 @@ public class ScreenToggle extends CordovaPlugin {
             
             powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
             keyguardManager = (KeyguardManager)context.getSystemService(Context.KEYGUARD_SERVICE);
+            keyLock = keyguardManager.newKeyguardLock("unlock");            
+            wakeLock = powerManager.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP|PowerManager.FULL_WAKE_LOCK, "lizz:bright");
+
             //todo  开启服务
         }
     }
@@ -145,16 +150,11 @@ public class ScreenToggle extends CordovaPlugin {
 
     public void turnOnScreen() {
         Log.v(tag, "ON!");
-
-        KeyguardManager.KeyguardLock keyLock = keyguardManager.newKeyguardLock("unlock");
+        
         keyLock.disableKeyguard();
-
-
-        wakeLock = powerManager.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP|PowerManager.FULL_WAKE_LOCK, "lizz:bright");
 
         wakeLock.acquire();
         wakeLock.release();
-
     }
 
     public void turnOffScreen() {
