@@ -136,18 +136,6 @@ public class ScreenToggle extends CordovaPlugin {
         this.cordova.startActivityForResult((CordovaPlugin) this, policyIntent, 0);
     }
 
-    public void StartService(){
-
-
-
-    }
-
-
-    public void StopService(){
-
-
-    }
-
     public void turnOnScreen() {
         Log.v(tag, "ON!");
         
