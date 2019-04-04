@@ -18,5 +18,7 @@ exports.disable = function (arg0, success, error) {
     exec(success, error, 'ScreenToggle', 'disable', [arg0]);
 };
 
-
+exports.config = function (opens, closes, success, error) {
+    exec(success, error, 'ScreenToggle', 'config', [opens, closes]);
+};
 });

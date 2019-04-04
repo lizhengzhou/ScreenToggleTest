@@ -18,6 +18,7 @@ import android.app.Activity;
 import org.apache.cordova.CordovaWebView;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * This class echoes a string called from JavaScript.
@@ -31,7 +32,7 @@ public class ScreenToggle extends CordovaPlugin {
     PowerManager.WakeLock wakeLock;
     PowerManager powerManager;
     KeyguardManager.KeyguardLock keyLock;
-    
+
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
@@ -49,11 +50,11 @@ public class ScreenToggle extends CordovaPlugin {
             requestDeviceAdmin();
         } else {
             Toast.makeText(context, "初始化检查：设备已被激活", Toast.LENGTH_LONG).show();
-            
+
             powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-            keyguardManager = (KeyguardManager)context.getSystemService(Context.KEYGUARD_SERVICE);
-            keyLock = keyguardManager.newKeyguardLock("unlock");            
-            wakeLock = powerManager.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP|PowerManager.FULL_WAKE_LOCK, "lizz:bright");
+            keyguardManager = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
+            keyLock = keyguardManager.newKeyguardLock("unlock");
+            wakeLock = powerManager.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.FULL_WAKE_LOCK, "lizz:bright");
 
             //todo  开启服务
             StartService();
@@ -76,6 +77,11 @@ public class ScreenToggle extends CordovaPlugin {
             String message = args.getString(0);
             this.disable(message, callbackContext);
             return true;
+        } else if (action.equals("config")) {
+            JSONArray opens = args.getJSONArray(0);
+            JSONArray closes = args.getJSONArray(1);
+            this.config(opens, closes, callbackContext);
+            return true;
         }
         return false;
     }
@@ -84,20 +90,20 @@ public class ScreenToggle extends CordovaPlugin {
         try {
             turnOnScreen();
             boolean isScreenOn = powerManager.isScreenOn();
-            callbackContext.success(isScreenOn+"");
+            callbackContext.success(isScreenOn + "");
         } catch (Exception e) {
             callbackContext.error(e.getMessage());
-        }      
+        }
     }
 
     private void close(CallbackContext callbackContext) {
         try {
             turnOffScreen();
             boolean isScreenOn = powerManager.isScreenOn();
-            callbackContext.success(isScreenOn+"");
+            callbackContext.success(isScreenOn + "");
         } catch (Exception e) {
             callbackContext.error(e.getMessage());
-        } 
+        }
     }
 
     private void enable(String message, CallbackContext callbackContext) {
@@ -117,6 +123,25 @@ public class ScreenToggle extends CordovaPlugin {
         }
     }
 
+    private void config(JSONArray opens, JSONArray closes, CallbackContext callbackContext) {
+        for (int i = 0; i < opens.length(); i++) {
+            try {
+                String open = opens.getString(i);
+                Log.d(tag + "-open", open);
+            } catch (Exception e) {
+                callbackContext.error(e.getMessage());
+            }
+        }
+
+        for (int i = 0; i < closes.length(); i++) {
+            try {
+                String close = closes.getString(i);
+                Log.d(tag + "-close", close);
+            } catch (Exception e) {
+                callbackContext.error(e.getMessage());
+            }
+        }
+    }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         Activity context = cordova.getActivity();
@@ -138,30 +163,30 @@ public class ScreenToggle extends CordovaPlugin {
         this.cordova.startActivityForResult((CordovaPlugin) this, policyIntent, 0);
     }
 
-    public void StartService(){
+    public void StartService() {
         Activity context = cordova.getActivity();
 
-        Intent intent = new Intent(context,BackGroundService.class);
+        Intent intent = new Intent(context, BackGroundService.class);
 
         context.startService(intent);
-        
+
         Log.v(tag, "start Service");
     }
 
 
-    public void StopService(){
+    public void StopService() {
         Activity context = cordova.getActivity();
 
-        Intent intent = new Intent(context,BackGroundService.class);
+        Intent intent = new Intent(context, BackGroundService.class);
 
         context.stopService(intent);
-        
+
         Log.v(tag, "stop Service");
     }
 
     public void turnOnScreen() {
         Log.v(tag, "ON!");
-        
+
         keyLock.disableKeyguard();
 
         wakeLock.acquire();
