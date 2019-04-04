@@ -1,0 +1,18 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-toggle-screen": {
+      "PACKAGE_NAME": "io.cordova.testtoggle"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.cordova.testtoggle"
+    }
+  },
+  "dependent_plugins": {}
+}
