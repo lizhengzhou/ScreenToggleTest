@@ -11,7 +11,7 @@ import android.util.Log;
 
 public class BackGroundService extends Service {
 
-    final String tag = "cn.lizz.cordova.plugin.BackGroundService";
+    final String tag = "lizz.BackGroundService";
     DevicePolicyManager policyManager;
     PowerManager powerManager;
     KeyguardManager keyguardManager;

@@ -1,20 +1,17 @@
 package cn.lizz.cordova.plugin;
 
-import java.util.HashSet;
-
 import android.app.KeyguardManager;
 import android.app.Service;
 import android.app.admin.DevicePolicyManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.util.Log;
 
 public class BackGroundService extends Service {
 
-    final String tag = "cn.lizz.cordova.plugin.BackGroundService";
+    final String tag = "lizz.BackGroundService";
     DevicePolicyManager policyManager;
     PowerManager powerManager;
     KeyguardManager keyguardManager;
@@ -57,12 +54,6 @@ public class BackGroundService extends Service {
                     try {
 
                         Log.i(tag, "DoSomething");
-
-                        
-                        SharedPreferences preferences = context.getSharedPreferences("Config", Context.MODE_PRIVATE);
-                        HashSet openSet = preferences.getStringSet("open",new HashSet());
-                        HashSet closeSet = preferences.getStringSet("close",new HashSet());
-
 
                         if (powerManager != null) {
                             boolean screen = powerManager.isScreenOn();
