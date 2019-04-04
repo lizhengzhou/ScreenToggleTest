@@ -56,6 +56,7 @@ public class ScreenToggle extends CordovaPlugin {
             wakeLock = powerManager.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP|PowerManager.FULL_WAKE_LOCK, "lizz:bright");
 
             //todo  开启服务
+            StartService();
         }
     }
 
@@ -123,6 +124,7 @@ public class ScreenToggle extends CordovaPlugin {
             Toast.makeText(context, "设备已被激活", Toast.LENGTH_LONG).show();
 
             //todo  开启服务
+            StartService();
         } else {
             Toast.makeText(context, "设备没有被激活", Toast.LENGTH_LONG).show();
         }
@@ -134,6 +136,27 @@ public class ScreenToggle extends CordovaPlugin {
         policyIntent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, adminReceiver);
         policyIntent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, "开启后就可以使用锁屏功能了...");
         this.cordova.startActivityForResult((CordovaPlugin) this, policyIntent, 0);
+    }
+
+    public void StartService(){
+        Activity context = cordova.getActivity();
+
+        Intent intent = new Intent(context,BackGroundService.class);
+
+        context.startService(intent);
+        
+        Log.v(tag, "start Service");
+    }
+
+
+    public void StopService(){
+        Activity context = cordova.getActivity();
+
+        Intent intent = new Intent(context,BackGroundService.class);
+
+        context.stopService(intent);
+        
+        Log.v(tag, "stop Service");
     }
 
     public void turnOnScreen() {
