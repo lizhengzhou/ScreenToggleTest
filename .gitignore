@@ -67,3 +67,9 @@ fastlane/test_output
 fastlane/readme.md
 
 node_modules
+platforms/android/.idea/caches/build_file_checksums.ser
+platforms/android/.idea/misc.xml
+platforms/android/.idea/modules.xml
+platforms/android/.idea/workspace.xml
+platforms/android/app/.project
+platforms/android/CordovaLib/.project

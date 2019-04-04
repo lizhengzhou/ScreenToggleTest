@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="test" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+  </component>
   <component name="CMakeSettings">
     <configurations>
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5424c5d4-3fb2-4f83-80db-6eceba8729a2" name="Default" comment="" />
+    <list default="true" id="80da8820-b50a-4798-a938-2f013acdb892" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,11 +32,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ScreenToggle.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ScreenToggle.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/cn/lizz/cordova/plugin/ScreenToggle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="134" lean-forward="true" selection-start-line="134" selection-end-line="134" />
+            <state relative-caret-position="-3458">
+              <caret line="10" column="45" lean-forward="true" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BackGroundService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/cn/lizz/cordova/plugin/BackGroundService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-665">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -2969,7 +2982,7 @@
     </option>
     <option name="projectSyncType">
       <map>
-        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
+        <entry key="$PROJECT_DIR$" value="IMPORT" />
         <entry key="E:/workspace/autoupdatetest/testScreenToggle/platforms/android" value="PREVIEW" />
       </map>
     </option>
@@ -2993,6 +3006,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
@@ -3016,7 +3030,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3024,9 +3037,8 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="D:/Android/android-sdk" />
     <property name="device.picker.selection" value="HA0LSYG4" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
-    <property name="sync.plugin.last.upgrade.timestamp" value="1554366265925" />
+    <property name="sync.plugin.last.upgrade.timestamp" value="1554367719894" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -3061,7 +3073,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -3145,11 +3157,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5424c5d4-3fb2-4f83-80db-6eceba8729a2" name="Default" comment="" />
-      <created>1554366258780</created>
+      <changelist id="80da8820-b50a-4798-a938-2f013acdb892" name="Default" comment="" />
+      <created>1554367714432</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1554366258780</updated>
+      <updated>1554367714432</updated>
     </task>
     <servers />
   </component>
@@ -3158,7 +3170,7 @@
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Android Profiler" />
+      <window_info anchor="bottom" id="Android Profiler" show_stripe_button="false" />
       <window_info anchor="right" id="Palette&#9;" />
       <window_info id="Image Layers" />
       <window_info id="Build Variants" side_tool="true" />
@@ -3167,12 +3179,12 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Logcat" />
+      <window_info anchor="bottom" id="Logcat" visible="true" weight="0.32900432" />
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info anchor="bottom" id="Build" visible="true" weight="0.3300866" />
+      <window_info anchor="bottom" id="Build" weight="0.3300866" />
       <window_info anchor="right" id="Gradle" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Theme Preview" />
@@ -3194,8 +3206,15 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/java/cn/lizz/cordova/plugin/ScreenToggle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="134" lean-forward="true" selection-start-line="134" selection-end-line="134" />
+        <state relative-caret-position="-3458">
+          <caret line="10" column="45" lean-forward="true" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/cn/lizz/cordova/plugin/BackGroundService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-665">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>

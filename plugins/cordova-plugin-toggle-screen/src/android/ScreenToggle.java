@@ -2,6 +2,9 @@ package cn.lizz.cordova.plugin;
 
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
+
+import java.util.HashSet;
+
 import org.apache.cordova.CallbackContext;
 
 import android.app.KeyguardManager;
@@ -9,6 +12,7 @@ import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.PowerManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -33,18 +37,17 @@ public class ScreenToggle extends CordovaPlugin {
     PowerManager powerManager;
     KeyguardManager.KeyguardLock keyLock;
 
-
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
 
-        //获取GetContext
+        // 获取GetContext
         Activity context = cordova.getActivity();
-        //获取DevicePolicyManager
+        // 获取DevicePolicyManager
         policyManager = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
-        //获取ComponentName
+        // 获取ComponentName
         adminReceiver = new ComponentName(context, ScreenOffAdminReceiver.class);
-        //判断是否激活设备管理器
+        // 判断是否激活设备管理器
         if (!policyManager.isAdminActive(adminReceiver)) {
             Toast.makeText(context, "初始化检查：请求授权设备管理", Toast.LENGTH_LONG).show();
             requestDeviceAdmin();
@@ -54,9 +57,10 @@ public class ScreenToggle extends CordovaPlugin {
             powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
             keyguardManager = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
             keyLock = keyguardManager.newKeyguardLock("unlock");
-            wakeLock = powerManager.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.FULL_WAKE_LOCK, "lizz:bright");
+            wakeLock = powerManager.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.FULL_WAKE_LOCK,
+                    "lizz:bright");
 
-            //todo  开启服务
+            // todo 开启服务
             StartService();
         }
     }
@@ -124,10 +128,15 @@ public class ScreenToggle extends CordovaPlugin {
     }
 
     private void config(JSONArray opens, JSONArray closes, CallbackContext callbackContext) {
+
+        HashSet openSet = new HashSet();
+        HashSet closeSet = new HashSet();
+
         for (int i = 0; i < opens.length(); i++) {
             try {
                 String open = opens.getString(i);
                 Log.d(tag + "-open", open);
+                openSet.add(open);
             } catch (Exception e) {
                 callbackContext.error(e.getMessage());
             }
@@ -137,24 +146,36 @@ public class ScreenToggle extends CordovaPlugin {
             try {
                 String close = closes.getString(i);
                 Log.d(tag + "-close", close);
+                closeSet.add(close);
             } catch (Exception e) {
                 callbackContext.error(e.getMessage());
             }
         }
+
+        Activity context = cordova.getActivity();
+
+        SharedPreferences preferences = context.getSharedPreferences("Config", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putStringSet("open", openSet);
+        editor.putStringSet("close", closeSet);
+
+        editor.commit();
+
+        callbackContext.success("" + true);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         Activity context = cordova.getActivity();
-        if (policyManager.isAdminActive(adminReceiver)) {//判断超级管理员是否激活
+        if (policyManager.isAdminActive(adminReceiver)) {// 判断超级管理员是否激活
             Toast.makeText(context, "设备已被激活", Toast.LENGTH_LONG).show();
 
-            //todo  开启服务
+            // todo 开启服务
             StartService();
         } else {
             Toast.makeText(context, "设备没有被激活", Toast.LENGTH_LONG).show();
         }
     }
-
 
     public void requestDeviceAdmin() {
         Intent policyIntent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
@@ -172,7 +193,6 @@ public class ScreenToggle extends CordovaPlugin {
 
         Log.v(tag, "start Service");
     }
-
 
     public void StopService() {
         Activity context = cordova.getActivity();
