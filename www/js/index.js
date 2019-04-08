@@ -42,7 +42,7 @@ var app = {
         console.log('Received Event: ' + id);
 
         var ScreenToggle=cordova.plugins.ScreenToggle;
-        ScreenToggle.config(["08:00:00"],["18:00:00"]);
+        ScreenToggle.config(["14:35:00"],["14:33:00"]);
     }
 };
 

@@ -18,6 +18,7 @@
         <source-file src="src/android/ScreenOffAdminReceiver.java" target-dir="src/cn/lizz/cordova/plugin" />
         <source-file src="src/android/device_admin.xml" target-dir="res/xml" />
         <source-file src="src/android/BackGroundService.java" target-dir="src/cn/lizz/cordova/plugin" />
+        <source-file src="src/android/HourMinute.java" target-dir="src/cn/lizz/cordova/plugin" />
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <receiver android:name="cn.lizz.cordova.plugin.ScreenOffAdminReceiver">

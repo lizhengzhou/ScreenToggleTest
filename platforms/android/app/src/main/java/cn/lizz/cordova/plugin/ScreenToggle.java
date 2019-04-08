@@ -43,6 +43,13 @@ public class ScreenToggle extends CordovaPlugin {
 
         // 获取GetContext
         Activity context = cordova.getActivity();
+
+        powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        keyguardManager = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
+        keyLock = keyguardManager.newKeyguardLock("unlock");
+        wakeLock = powerManager.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.FULL_WAKE_LOCK,
+                "lizz:bright");
+
         // 获取DevicePolicyManager
         policyManager = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
         // 获取ComponentName
@@ -53,13 +60,6 @@ public class ScreenToggle extends CordovaPlugin {
             requestDeviceAdmin();
         } else {
             Toast.makeText(context, "初始化检查：设备已被激活", Toast.LENGTH_LONG).show();
-
-            powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-            keyguardManager = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
-            keyLock = keyguardManager.newKeyguardLock("unlock");
-            wakeLock = powerManager.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.FULL_WAKE_LOCK,
-                    "lizz:bright");
-
             // todo 开启服务
             StartService();
         }
@@ -75,11 +75,11 @@ public class ScreenToggle extends CordovaPlugin {
             return true;
         } else if (action.equals("enable")) {
             String message = args.getString(0);
-            this.enable(message, callbackContext);
+            this.enable(callbackContext);
             return true;
         } else if (action.equals("disable")) {
             String message = args.getString(0);
-            this.disable(message, callbackContext);
+            this.disable(callbackContext);
             return true;
         } else if (action.equals("config")) {
             JSONArray opens = args.getJSONArray(0);
@@ -110,27 +110,18 @@ public class ScreenToggle extends CordovaPlugin {
         }
     }
 
-    private void enable(String message, CallbackContext callbackContext) {
-
-        if (message != null && message.length() > 0) {
-            callbackContext.success(message);
-        } else {
-            callbackContext.error("Expected one non-empty string argument.");
-        }
+    private void enable(CallbackContext callbackContext) {
+        StartService();
     }
 
-    private void disable(String message, CallbackContext callbackContext) {
-        if (message != null && message.length() > 0) {
-            callbackContext.success(message);
-        } else {
-            callbackContext.error("Expected one non-empty string argument.");
-        }
+    private void disable(CallbackContext callbackContext) {
+        StopService();
     }
 
     private void config(JSONArray opens, JSONArray closes, CallbackContext callbackContext) {
 
-        HashSet openSet = new HashSet();
-        HashSet closeSet = new HashSet();
+        HashSet<String> openSet = new HashSet<String>();
+        HashSet<String> closeSet = new HashSet<String>();
 
         for (int i = 0; i < opens.length(); i++) {
             try {
