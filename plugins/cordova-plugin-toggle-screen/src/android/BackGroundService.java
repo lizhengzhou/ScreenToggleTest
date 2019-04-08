@@ -130,7 +130,7 @@ public class BackGroundService extends Service {
         for (String str:hashSet) {
             Log.d(tag, str);
 
-            if(Pattern.matches("^\\d{2}:\\d{2}:\\d{2}$", str)){
+            if(Pattern.matches("^\\d{1,2}:\\d{1,2}:\\d{1,2}$", str)){
                 String[] splitStr = str.split(":");
 
                 HourMinute hm = new HourMinute();
