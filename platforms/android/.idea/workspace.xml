@@ -35,8 +35,8 @@
       <file leaf-file-name="BackGroundService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/cn/lizz/cordova/plugin/BackGroundService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1783">
-              <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+            <state relative-caret-position="377">
+              <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1548#2867#0" expanded="true" />
@@ -47,7 +47,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HourMinute.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HourMinute.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/cn/lizz/cordova/plugin/HourMinute.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="76">
@@ -56,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScreenToggle.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ScreenToggle.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/cn/lizz/cordova/plugin/ScreenToggle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="81" column="42" lean-forward="true" selection-start-line="81" selection-start-column="42" selection-end-line="81" selection-end-column="42" />
+            <state relative-caret-position="266">
+              <caret line="75" column="45" selection-start-line="75" selection-start-column="45" selection-end-line="75" selection-end-column="45" />
               <folding>
                 <element signature="e#3885#3886#0" expanded="true" />
                 <element signature="e#3915#3916#0" expanded="true" />
@@ -3020,9 +3020,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/cn/lizz/cordova/plugin/HourMinute.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/cn/lizz/cordova/plugin/BackGroundService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/cn/lizz/cordova/plugin/ScreenToggle.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/cn/lizz/cordova/plugin/BackGroundService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/cn/lizz/cordova/plugin/HourMinute.java" />
       </list>
     </option>
   </component>
@@ -3236,17 +3236,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/cn/lizz/cordova/plugin/HourMinute.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/cn/lizz/cordova/plugin/BackGroundService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1783">
-          <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+        <state relative-caret-position="377">
+          <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1548#2867#0" expanded="true" />
@@ -3258,8 +3251,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/cn/lizz/cordova/plugin/ScreenToggle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="81" column="42" lean-forward="true" selection-start-line="81" selection-start-column="42" selection-end-line="81" selection-end-column="42" />
+        <state relative-caret-position="266">
+          <caret line="75" column="45" selection-start-line="75" selection-start-column="45" selection-end-line="75" selection-end-column="45" />
           <folding>
             <element signature="e#3885#3886#0" expanded="true" />
             <element signature="e#3915#3916#0" expanded="true" />
@@ -3268,6 +3261,13 @@
             <element signature="e#4566#4574#0" expanded="true" />
             <element signature="e#4624#4632#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/cn/lizz/cordova/plugin/HourMinute.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
         </state>
       </provider>
     </entry>

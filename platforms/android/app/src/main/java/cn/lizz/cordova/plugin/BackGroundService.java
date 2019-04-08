@@ -48,9 +48,9 @@ public class BackGroundService extends Service {
 
         powerManager = (PowerManager) this.getApplicationContext().getSystemService(Context.POWER_SERVICE);
         policyManager = (DevicePolicyManager) this.getApplicationContext().getSystemService(Context.DEVICE_POLICY_SERVICE);
-        keyguardManager = (KeyguardManager)this.getApplicationContext().getSystemService(Context.KEYGUARD_SERVICE);
+        keyguardManager = (KeyguardManager) this.getApplicationContext().getSystemService(Context.KEYGUARD_SERVICE);
         keyLock = keyguardManager.newKeyguardLock("unlock");
-        screenLock = powerManager.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP|PowerManager.FULL_WAKE_LOCK, "lizz:bright");
+        screenLock = powerManager.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.FULL_WAKE_LOCK, "lizz:bright");
 
         wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, tag + ":wakeLockTag");
 
@@ -77,12 +77,12 @@ public class BackGroundService extends Service {
                             Log.i(tag, "isScreenOn：" + isScreenOn);
                             if (isScreenOn) {
                                 ArrayList<HourMinute> list = getList(false);
-                                if(Match(list)){
+                                if (Match(list)) {
                                     turnOffScreen();
                                 }
                             } else {
                                 ArrayList<HourMinute> list = getList(true);
-                                if(Match(list)){
+                                if (Match(list)) {
                                     turnOnScreen();
                                 }
                             }
@@ -122,36 +122,35 @@ public class BackGroundService extends Service {
         policyManager.lockNow();
     }
 
-    public ArrayList<HourMinute> getList(boolean IsOpen){
+    public ArrayList<HourMinute> getList(boolean IsOpen) {
         ArrayList<HourMinute> list = new ArrayList<HourMinute>();
 
         SharedPreferences preferences = getSharedPreferences("Config", Context.MODE_PRIVATE);
-        HashSet<String> hashSet = (HashSet<String>) preferences.getStringSet(IsOpen?"open":"close",new HashSet<String>());
-        for (String str:hashSet) {
+        HashSet<String> hashSet = (HashSet<String>) preferences.getStringSet(IsOpen ? "open" : "close", new HashSet<String>());
+        for (String str : hashSet) {
             Log.d(tag, str);
 
-            if(Pattern.matches("^\\d{2}:\\d{2}:\\d{2}$", str)){
+            if (Pattern.matches("^\\d{2}:\\d{2}:\\d{2}$", str)) {
                 String[] splitStr = str.split(":");
 
                 HourMinute hm = new HourMinute();
-                hm.Hour=Integer.parseInt(splitStr[0]);
-                hm.Minute=Integer.parseInt(splitStr[1]);
+                hm.Hour = Integer.parseInt(splitStr[0]);
+                hm.Minute = Integer.parseInt(splitStr[1]);
                 list.add(hm);
             }
         }
         return list;
     }
 
-    public boolean Match(ArrayList<HourMinute> list){
+    public boolean Match(ArrayList<HourMinute> list) {
         Date now = new Date();
         SimpleDateFormat format = new SimpleDateFormat("HH");
         int Hour = Integer.parseInt(format.format(now));
-        format=new SimpleDateFormat("mm");
+        format = new SimpleDateFormat("mm");
         int Minute = Integer.parseInt(format.format(now));
 
-        for (HourMinute item:list) {
-            if(item.Hour==Hour&&item.Minute==Minute)
-            {
+        for (HourMinute item : list) {
+            if (item.Hour == Hour && item.Minute == Minute) {
                 return true;
             }
         }
