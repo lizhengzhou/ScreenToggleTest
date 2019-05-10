@@ -39,7 +39,5 @@
             <uses-permission android:name="android.permission.USES_POLICY_FORCE_LOCK" />
             <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
         </config-file>
-
-
     </platform>
 </plugin>

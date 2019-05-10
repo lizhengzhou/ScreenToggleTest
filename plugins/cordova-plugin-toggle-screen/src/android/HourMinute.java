@@ -4,3 +4,4 @@ public class HourMinute {
     public int Hour ;
     public int Minute;
 }
+

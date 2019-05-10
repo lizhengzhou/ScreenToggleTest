@@ -81,3 +81,4 @@ platforms/android/app/.project
 platforms/android/CordovaLib/.project
 
 platforms/android/.idea/workspace.xml
+platforms/android/.settings/org.eclipse.buildship.core.prefs

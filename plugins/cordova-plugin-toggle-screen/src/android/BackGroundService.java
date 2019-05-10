@@ -55,7 +55,6 @@ public class BackGroundService extends Service {
         wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, tag + ":wakeLockTag");
 
         wakeLock.acquire();
-
     }
 
     @Override
